@@ -15,6 +15,8 @@ set backspace=2
 " General settings
 "
 syntax on
+set number
+
 set mouse=a
 if has("mouse_sgr")
   set ttymouse=sgr
@@ -25,8 +27,6 @@ end
 let mapleader = "-"
 let localleader = "\\"
 
-inoremap kj <esc>
-
 set splitright
 set splitbelow
 " Open .vimrc for editing
@@ -35,16 +35,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "
-" KEX settings
-"
-iabbrev jO JSONObject
-iabbrev ja JSONArray
-iabbrev jo jsonOut
-iabbrev ji jsonIn
-
-"
 " Beat45 settings
 "
 nnoremap <SPACE> :silent !~/repos/web/deploy.sh<CR>:redraw!<CR>
 nnoremap <C-n> :set number!<CR>
-set number
