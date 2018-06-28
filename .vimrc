@@ -41,3 +41,10 @@ iabbrev jO JSONObject
 iabbrev ja JSONArray
 iabbrev jo jsonOut
 iabbrev ji jsonIn
+
+"
+" Beat45 settings
+"
+nnoremap <SPACE> :silent !~/repos/web/deploy.sh<CR>:redraw!<CR>
+nnoremap <C-n> :set number!<CR>
+set number
