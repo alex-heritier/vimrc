@@ -7,6 +7,7 @@ call plug#end()
 " Ron settings
 syntax enable
 set backspace=2
+
 filetype plugin indent on
 " show existing tab with 2 spaces width
 set tabstop=2
@@ -29,18 +30,21 @@ function! SayRandomError()
 endfunc
 
 nnoremap <Up> :call SayRandomError()<CR>
-inoremap <Up> :call SayRandomError()<CR>
+inoremap <Up> <ESC>:call SayRandomError()<CR>i
 nnoremap <Right> :call SayRandomError()<CR>
-inoremap <Right> :call SayRandomError()<CR>
+inoremap <Right> <ESC>:call SayRandomError()<CR>i
 nnoremap <Down> :call SayRandomError()<CR>
-inoremap <Down> <ESC>:call SayRandomErro()<CR>
+inoremap <Down> <ESC>:call SayRandomError()<CR>i
 nnoremap <Left> :call SayRandomError()<CR>
-inoremap <Left> <ESC>:call SayRandomError()<CR>
+inoremap <Left> <ESC>:call SayRandomError()<CR>i
 
 set splitright
 set splitbelow
+" Open .vimrc for editing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" Source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <C-n> :set number!<CR>
 
 set smarttab      
 set incsearch
@@ -53,10 +57,10 @@ colorscheme molokai
 set laststatus=2
 set statusline=
 set statusline+=\ %f " filename
-set statusline+=\ --
+set statusline+=\ -
 set statusline+=\ %l:%L " current line:total lines
-set statusline+=\ --
-set statusline+=\ %p%%
-set statusline+=%1*\ %=
+" set statusline+=\ --
+" set statusline+=\ %p%% " file percentage
+set statusline+=%1*\ %= " push following statusline content to the right
 set statusline+=%*\ %n\  " buffer number
-hi User1 guifg=#222222 guibg=#191f26 gui=BOLD
+hi statusline ctermfg=222 ctermbg=18
