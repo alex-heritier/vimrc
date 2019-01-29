@@ -9,12 +9,9 @@ syntax enable
 set backspace=2
 
 filetype plugin indent on
-" show existing tab with 2 spaces width
-set tabstop=2
-" when indenting with '>', use 2 spaces width
-set shiftwidth=2
-" On pressing tab, insert 2 spaces
-set expandtab
+set tabstop=2 " show existing tab with 2 spaces width
+set shiftwidth=2 " when indenting with '>', use 2 spaces width
+set expandtab " On pressing tab, insert 2 spaces
 
 
 " Old custom settings
@@ -27,7 +24,7 @@ function! SayRandomError()
   let command = "say " . swear_words[random_number]
 
   call jobstart(command)
-endfunc
+endfunction
 
 nnoremap <Up> :call SayRandomError()<CR>
 inoremap <Up> <ESC>:call SayRandomError()<CR>i
@@ -45,6 +42,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <C-n> :set number!<CR>
+nnoremap <space> za
 
 set smarttab      
 set incsearch
@@ -56,11 +54,10 @@ colorscheme molokai
 " Status line
 set laststatus=2
 set statusline=
+set statusline+=> 
 set statusline+=\ %f " filename
 set statusline+=\ -
 set statusline+=\ %l:%L " current line:total lines
-" set statusline+=\ --
-" set statusline+=\ %p%% " file percentage
 set statusline+=%1*\ %= " push following statusline content to the right
 set statusline+=%*\ %n\  " buffer number
-hi statusline ctermfg=222 ctermbg=18
+hi statusline ctermfg=black ctermbg=white
