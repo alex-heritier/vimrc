@@ -1,7 +1,9 @@
-
 " Plugins
-call plug#begin('~/.config/nvim/plugged')
-call plug#end()
+try
+  call plug#begin('~/.config/nvim/plugged')
+  call plug#end()
+catch
+endtry
 
 
 " Ron settings
