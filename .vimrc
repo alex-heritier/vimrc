@@ -21,11 +21,16 @@ let mapleader = "-"
 let localleader = "\\"
 
 function! SayRandomError()
-  let swear_words = ['shit', 'bitch', 'ass', 'fuck', 'damn']
-  let random_number = system("random 0 " . (len(swear_words) - 1))
-  let command = "say " . swear_words[random_number]
+  let swear_words = ['Shit', 'Bitch', 'Ass', 'Fuck', 'Damn']
+  let random_number = abs(reltime()[1] % len(swear_words))
+  let the_word = swear_words[random_number]
+  let command = "say " . the_word
 
-  call jobstart(command)
+  try
+    call jobstart(command)
+  catch
+    echom ">> Don't use arrow keys! " . the_word . "!"
+  endtry
 endfunction
 
 nnoremap <Up> :call SayRandomError()<CR>
@@ -46,17 +51,23 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <C-n> :set number!<CR>
 nnoremap <space> za
 
-set smarttab      
+set smarttab
 set incsearch
 set autoindent
 set scrolloff=1
 set mouse=a " mouse wheel scrolling
-colorscheme molokai
+
+" Color scheme
+try
+  colorscheme molokai
+catch
+  colorscheme desert
+endtry
 
 " Status line
 set laststatus=2
 set statusline=
-set statusline+=> 
+set statusline+=>
 set statusline+=\ %f " filename
 set statusline+=\ -
 set statusline+=\ %l:%L " current line:total lines
